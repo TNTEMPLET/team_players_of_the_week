@@ -7,8 +7,9 @@ document.addEventListener('DOMContentLoaded', createTable('Major', '12', url));
 
 function createTable(division,age,url) {
         const output = document.querySelector(`.output-${division}-${age}`);
+        const header = document.querySelector(`.header-${division}-${age}`);
         // Check if output element exists
-        if (output) {
+        if (output, header) {
             const query = encodeURIComponent(`Select A,E,F,G,H,I WHERE E CONTAINS '${division}' AND E CONTAINS '${age}' ORDER BY A`);
             url = url + '&tq=' + query; 
             fetch(url)
