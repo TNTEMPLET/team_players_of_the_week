@@ -34,23 +34,23 @@ document.addEventListener('DOMContentLoaded', createTable('Major', '12', url));
 
 function createTable(division,age,url) {
         const output = document.querySelector(`.output-${division}-${age}`);
-        const header = document.querySelector(`.header-${division}-${age}`);
+        // const header = document.querySelector(`.header-${division}-${age}`);
         // Check if output element exists
-        if (output, header) {
+        if (output) {
             const query = encodeURIComponent(`Select A,E,F,G,H,I WHERE E CONTAINS '${division}' AND E CONTAINS '${age}' ORDER BY A`);
             url = url + '&tq=' + query; 
             fetch(url)
                 .then(res => res.text())
                 .then(rep => {
                     const data = JSON.parse(rep.substr(47).slice(0, -2));
-                    const row = document.createElement('tr');
-                    
-                    header.append(row);
-                    data.table.cols.forEach((heading) => {
-                        const cell = document.createElement('td');
-                        cell.textContent = heading.label;
-                        row.append(cell);
-                    });
+
+                    // const row = document.createElement('tr');
+                    // header.append(row);
+                    // data.table.cols.forEach((heading) => {
+                    //     const cell = document.createElement('td');
+                    //     cell.textContent = heading.label;
+                    //     row.append(cell);
+                    // });
                     data.table.rows.forEach((main) => {
                         const container = document.createElement('tr');
                         output.append(container);
