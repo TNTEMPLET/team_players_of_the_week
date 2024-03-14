@@ -1,40 +1,12 @@
 const url = "https://docs.google.com/spreadsheets/d/1egHCoZqAPm_B8WiWLo9dEHUQONMOFu38b487slOO_4s/gviz/tq?";
 
-// document.addEventListener('DOMContentLoaded', createHeader(url));
 document.addEventListener('DOMContentLoaded', createTable('Major', '9', url));
 document.addEventListener('DOMContentLoaded', createTable('Major', '10', url));
 document.addEventListener('DOMContentLoaded', createTable('Major', '12', url));
 
-// function createHeader(url) {
-//     const header = document.querySelector(`.header`);
-
-//     if (header) {
-//         const query = encodeURIComponent(`Select A,E,F,G,H,I`);
-//         url = url + '&tq=' + query; 
-//         fetch(url)
-//             .then(res => res.text())
-//             .then(rep => {
-//                 const data = JSON.parse(rep.substr(47).slice(0, -2));
-//                 const row = document.createElement('tr');
-                
-//                 header.append(row);
-//                 data.table.cols.forEach((heading) => {
-//                     const cell = document.createElement('td');
-//                     cell.textContent = heading.label;
-//                     row.append(cell);
-//                 });
-//             })
-//             .catch(error => {
-//                 console.error('Error fetching data:', error);
-//             });
-//     } else {
-//         console.error('Element not found.');
-//     }
-// };
 
 function createTable(division,age,url) {
         const output = document.querySelector(`.output-${division}-${age}`);
-        // const header = document.querySelector(`.header-${division}-${age}`);
         // Check if output element exists
         if (output) {
             const query = encodeURIComponent(`Select A,E,F,G,H,I WHERE E CONTAINS '${division}' AND E CONTAINS '${age}' ORDER BY A`);
@@ -43,14 +15,6 @@ function createTable(division,age,url) {
                 .then(res => res.text())
                 .then(rep => {
                     const data = JSON.parse(rep.substr(47).slice(0, -2));
-
-                    // const row = document.createElement('tr');
-                    // header.append(row);
-                    // data.table.cols.forEach((heading) => {
-                    //     const cell = document.createElement('td');
-                    //     cell.textContent = heading.label;
-                    //     row.append(cell);
-                    // });
                     data.table.rows.forEach((main) => {
                         const container = document.createElement('tr');
                         output.append(container);
