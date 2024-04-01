@@ -1,9 +1,16 @@
 const url = "https://docs.google.com/spreadsheets/d/1egHCoZqAPm_B8WiWLo9dEHUQONMOFu38b487slOO_4s/gviz/tq?";
 
+document.addEventListener('DOMContentLoaded', createTable('Coaches', '6', url));
+document.addEventListener('DOMContentLoaded', createTable('Coaches', '7', url));
+document.addEventListener('DOMContentLoaded', createTable('Coaches', '8', url));
 document.addEventListener('DOMContentLoaded', createTable('Major', '9', url));
+document.addEventListener('DOMContentLoaded', createTable('Minor', '9', url));
 document.addEventListener('DOMContentLoaded', createTable('Major', '10', url));
+document.addEventListener('DOMContentLoaded', createTable('Minor', '10', url));
 document.addEventListener('DOMContentLoaded', createTable('Major', '12', url));
-
+document.addEventListener('DOMContentLoaded', createTable('Minor', '12', url));
+document.addEventListener('DOMContentLoaded', createTable('Junior', '14', url));
+document.addEventListener('DOMContentLoaded', createTable('Senior', '16', url));
 
 function createTable(division,age,url) {
         const output = document.querySelector(`.output-${division}-${age}`);
